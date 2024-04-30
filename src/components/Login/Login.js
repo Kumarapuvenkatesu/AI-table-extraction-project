@@ -1,5 +1,5 @@
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { Box, Container, TextField, Typography, Button } from "@mui/material";
 import MainHead from "../Header/MainHeader";
 import { ToastContainer, toast } from 'react-toastify';
@@ -35,6 +35,12 @@ export default function Login() {
           toast.error(error)
         }
       };
+      useEffect(() => {
+        const jwtToken = Cookies.get('token');
+        if (jwtToken !== undefined) {
+          window.location.href = '/';
+        }
+      }, []);
     return (
         <>
             <MainHead/>

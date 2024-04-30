@@ -6,7 +6,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MicIcon from '../../assets/ai-images/mic.png';
 import SendIcon from '../../assets/ai-images/send.png';
-import dashboardImg from "../../assets/Ai-Application/PDF-Word/01.png";
 import imgs from '../../assets/ai-images/header-img.png';
 
 export default function DashboardImage() {
