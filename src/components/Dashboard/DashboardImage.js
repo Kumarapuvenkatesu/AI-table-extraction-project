@@ -11,7 +11,7 @@ import imgs from '../../assets/ai-images/header-img.png';
 export default function DashboardImage() {
     return (
         // <Box className="dasboard-image" height={"100vh"} mt={"5rem"} ml={`${MarginLeft.widthValue+42}px`}  >
-        <Box  height={320} >
+        <Box  height={229} >
             <img src={imgs} className='img-size'/>
             <Stack className='image-position' width={900}>
                 <Typography variant="h2" color={"#fff"}>How can I help you today ?</Typography>

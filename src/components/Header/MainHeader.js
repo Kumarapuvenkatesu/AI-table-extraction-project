@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useContext,lazy } from "react";
-import { AppBar, Toolbar, Typography, Button, IconButton, Stack } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, IconButton, Stack, Menu, MenuItem } from "@mui/material";
 import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from "@mui/material";
 import { AccountCircleOutlined, Email, Phone } from '@mui/icons-material';
 import { DataContext } from "../context/Context";
 import Cookies from "js-cookie";
 import IMG from "../../assets/straive-logo.png";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function TextHeader() {
   const jwtToken = Cookies.get("token");
   const data = useContext(DataContext);
   const [text, setText] = useState('');
   const { pathname } = useLocation();
+  const [anchorEl, setAnchorEl] = useState(null); 
+  const open=anchorEl!==null;
   useEffect(() => {
     switch (pathname) {
       case '/':
@@ -37,6 +40,16 @@ export default function TextHeader() {
     }
   }, [pathname]);
   const isScreenLarge = useMediaQuery('(min-width:1024px)');
+  const handleMenu = (event) => { 
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose=()=>{
+    setAnchorEl(null)
+  }
+  const removeToken=()=>{
+    Cookies.remove("token");
+    window.location.href="/login";
+  }
   return (
     <>
       {
@@ -74,10 +87,15 @@ export default function TextHeader() {
               <Typography variant="h5" noWrap sx={{ marginLeft: "20px", fontWeight: "550", color: "#000000" }}>
                 {text}
               </Typography>
-              <IconButton size="large"  >
+              <IconButton size="large" onClick={handleMenu} >
                 <AccountCircleOutlined />
                 <Button >Welcome</Button>
               </IconButton>
+              <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                <MenuItem onClick={removeToken}>
+                <LogoutIcon/> <Button >Sign Out</Button> 
+                </MenuItem>
+              </Menu>
             </Toolbar>
           </AppBar>
       }

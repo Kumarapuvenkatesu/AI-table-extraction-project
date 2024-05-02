@@ -81,8 +81,8 @@ export default function Login() {
                         <Button
                             type="submit"
                             variant="contained"
-                            fullWidth sx={{ mt: 3, mb: 2, }}
-                            className='download-button'
+                            fullWidth 
+                            sx={{ mt: 3, mb: 2,backgroundColor:"#006aff" }}
                         >
                             Login
                         </Button>

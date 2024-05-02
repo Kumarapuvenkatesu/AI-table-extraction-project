@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Box, Typography, Stack, TextField, IconButton, Button } from "@mui/material";
 import SideBar from "../Header/SideBar";
 import SubLogo from "./SubLogo";
@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Close } from "@mui/icons-material";
 import axios from "axios";
 import * as FileSaver from 'file-saver';
+import downloadImg from "../../assets/ai-images/table-success.png";
+import { DataContext } from "../context/Context";
 
 export default function TableExtraction() {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -15,6 +17,7 @@ export default function TableExtraction() {
     const [open, setOpen] = useState(false);
     const [response, setResponse] = useState([]);
     const [downloadStatus, setDownloadStatus] = useState(false);
+    const MarginLeft = useContext(DataContext);
     const handleFileUpload = () => {
         document.getElementById("fileInput").click();
     }
@@ -176,12 +179,17 @@ export default function TableExtraction() {
           setSelectedFile(null);
     }
     return (
-        <Box display={"flex"} justifyContent={"center"} component="form" onSubmit={onSubmit} >
+        <Box ml={`${MarginLeft.widthValue+42}px`}>
+        <SideBar/>
+        <Box  mt={"5rem"} marginRight={"3rem"}>
+            <SubLogo/>
+        <Box display={"flex"} justifyContent={"center"}  component="form" onSubmit={onSubmit} className="dropzone"  sx={{py:"5%"}}>
             <ToastContainer position="bottom-right" />
             {
                 downloadStatus ? (
-                    <Stack textAlign={"center"}>
-                    <Typography variant="h6" sx={{ color: "#68e043" }}>Extracting tables processed successfully</Typography>
+                    <Stack textAlign={"center"} alignItems={"center"}>
+                        <img src={downloadImg} alt="extract" width={"100px"}/>
+                    <Typography variant="h6" sx={{ color: "#006aff" }}>Extracting tables processed successfully</Typography>
                         <Typography paragraph>Please download the CSV File</Typography>
                         <Button variant="outlined" onClick={downloadData}>Download</Button>
                     </Stack>
@@ -203,6 +211,7 @@ export default function TableExtraction() {
                         </Box>
                     </Stack>
                     :
+                    <Box display={"flex"} justifyContent={"space-between"}  >
                     <Stack
                         className="dropzone1"
                         onClick={handleFileUpload}
@@ -217,21 +226,36 @@ export default function TableExtraction() {
                             accept="image/*,.zip, .pptx"
                             style={{ display: "none" }}
                             multiple
-                        />
+                        /> 
                         <Stack display="flex" alignItems="center" padding={"30px"} margin={"18px 30px"} height={"305px"}>
                             <img src={TableExtract} alt="logo" />
                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                 <Typography variant="body1" className="sub-title" >
-                                    Please drag and drop images <br /> or <br /> PPt files which has tables
+                                    Please drag and drop images <br /> or <br /> PPT files which has tables
                                 </Typography>
                             </Stack>
                         </Stack>
                     </Stack>
+                    <Stack display={"flex"} alignItems={"center"} justifyContent={"center"} margin={"8px"}>
+                        <Typography >OR</Typography>
+                    </Stack>
+                    <Stack display="flex" alignItems="center" padding={"62px"} height={"305px"}  className="dropzone2">
+                            <img src={TableExtract} alt="logo" />
+                            <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
+                                <Typography variant="body1" className="sub-title" >
+                                    Please Upload the images <br /> or <br /> PPT files which has tables
+                                </Typography>
+                                <Button variant="outlined" sx={{mt:4}} onClick={handleFileUpload}>Upload</Button>
+                            </Stack>
+                        </Stack>
+                    </Box>
             }
                     </>
                 )
             }
            
+        </Box>
+        </Box>
         </Box>
     )
 }

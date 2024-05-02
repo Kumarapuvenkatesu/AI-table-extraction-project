@@ -24,8 +24,8 @@ export default function SubLogo() {
         }
       }, [pathname]);
     return (
-        <Box color={"#fff"}>
-            <img src={SubAi} alt="Ai Tools" />
+        <Box color={"#fff"} height={250}>
+            <img src={SubAi} alt="Ai Tools" width={"100%"}/>
             <Stack className='image-position-sub' width={900}>
                <Typography paragraph mb={0}> Our Ai Tools can help you better!</Typography> 
                <Typography variant="h4"> {HeadindText}</Typography>
