@@ -194,23 +194,26 @@ export default function TableExtraction() {
                         <Button variant="outlined" onClick={downloadData}>Download</Button>
                     </Stack>
                 ) :(
-                    <>
-                     {
+                    <>{
+                        open ? 
+                        <Typography>hello</Typography>:<>
+                          {
                 selectedFile ?
-                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }} sx={{py:"5%"}}>
                         <img src={filePreviews} alt={'Preview'} width={"300px"} />
-                        <Stack direction="row" alignItems="center" justifyContent="space-around" className="name-background">
+                        <Stack direction="flex" alignItems="center" justifyContent="center" className="border-width">
                             <Typography paragraph mb={0} mr={2}>{selectedFile?.name}</Typography>
                             <IconButton onClick={CloseButton}>
                                 <Close />
                             </IconButton>
                         </Stack>
-                        <Box direction={"row"} justifyContent={"space-between"}>
-                            <Button variant="outlined" onClick={CloseButton}>Cancel</Button>
-                            <Button type="submit" variant="outlined"  >{selectedFile.type === "image/png" || selectedFile.type === "image/jpeg" || selectedFile.type === "image/jpg" ? "Convert " : "Download To Zip"}</Button>
+                        <Box display={"flex"} justifyContent={"space-between"}>
+                            <Button variant="outlined" onClick={CloseButton } className="border-width">Cancel</Button>
+                            <Button className="border-width" type="submit" variant="outlined"  >{selectedFile.type === "image/png" || selectedFile.type === "image/jpeg" || selectedFile.type === "image/jpg" ? "Convert " : "Download To Zip"}</Button>
                         </Box>
                     </Stack>
                     :
+                    
                     <Box display={"flex"} justifyContent={"space-between"}  >
                     <Stack
                         className="dropzone1"
@@ -249,7 +252,9 @@ export default function TableExtraction() {
                             </Stack>
                         </Stack>
                     </Box>
-            }
+            }</>
+                    }
+                   
                     </>
                 )
             }

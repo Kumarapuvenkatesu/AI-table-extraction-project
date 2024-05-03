@@ -90,11 +90,11 @@ export default function SideBar() {
             <Box sx={{ marginTop: "2rem" }}>
 
               <List className='text-center content-center'>
-                <ListItemButton component={NavLink} to="/" disableRipple id='dashboard'>
+                <ListItemButton component={NavLink} to="/" disableRipple >
                   <img src={DashboardImg} alt='Dashboard' />
                 </ListItemButton>
                 {/* <ListItemText primary="DASHBOARD" /> */}
-                <Typography paragraph mt={2} htmFor="dashboard">DASHBOARD</Typography>
+                <Typography paragraph mt={2} >DASHBOARD</Typography>
               </List>
               <List className='text-center content-center' onClick={showSubHeader}>
                 <ListItemButton disableRipple className={`${open ? 'bg-gray-200' : ''}`}>

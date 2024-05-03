@@ -62,6 +62,7 @@ export default function TableExtraction() {
                 toast.success("File uploaded", {
                   autoClose: 1000
                 });
+
                 displayImagePreviews(file)
               } else {
                 alert("Not Accepted This Type ");
@@ -73,13 +74,35 @@ export default function TableExtraction() {
           }
       
     };
-    const displayImagePreviews = (file) => {
+    // const displayImagePreviews = (file) => {
+    //     const reader = new FileReader();
+    //     reader.onload = (event) => {
+    //         setFilePreviews(event.target.result);
+    //     };
+    //     if (file && file.length > 0) {
+    //         const file = file[0];
+    //         reader.readAsDataURL(file);
+    //       }
+    // };\
+    const displayImagePreviews = (files) => {
         const reader = new FileReader();
+        console.log("fsf",reader)
         reader.onload = (event) => {
             setFilePreviews(event.target.result);
         };
-        reader.readAsDataURL(file);
+        if (files && files.length > 0) {
+            const file = files[0];
+           
+            if (file.type === 'application/pdf') {
+                // Convert the PDF file to a data URL
+                reader.readAsDataURL(file);
+                console.log("");
+            } else {
+                // Handle other file types or show an error message
+            }
+        }
     };
+    
     const CloseButton = () => {
         setSelectedFile(null)
     }
@@ -106,23 +129,26 @@ export default function TableExtraction() {
                         <Button variant="outlined" onClick={downloadData}>Download</Button>
                     </Stack>
                 ) :(
-                    <>
-                     {
+                    <>{
+                        open ? 
+                        <Typography>hello</Typography>:<>
+                          {
                 selectedFile ?
-                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }} sx={{py:"5%"}}>
                         <img src={filePreviews} alt={'Preview'} width={"300px"} />
-                        <Stack direction="row" alignItems="center" justifyContent="space-around" className="name-background">
+                        <Stack direction="flex" alignItems="center" justifyContent="center" className="border-width">
                             <Typography paragraph mb={0} mr={2}>{selectedFile?.name}</Typography>
                             <IconButton onClick={CloseButton}>
                                 <Close />
                             </IconButton>
                         </Stack>
-                        <Box direction={"row"} justifyContent={"space-between"}>
-                            <Button variant="outlined" onClick={CloseButton}>Cancel</Button>
-                            <Button type="submit" variant="outlined"  >{selectedFile.type === "image/png" || selectedFile.type === "image/jpeg" || selectedFile.type === "image/jpg" ? "Convert " : "Download To Zip"}</Button>
+                        <Box display={"flex"} justifyContent={"space-between"}>
+                            <Button variant="outlined" onClick={CloseButton } className="border-width">Cancel</Button>
+                            <Button className="border-width" type="submit" variant="outlined"  >{selectedFile.type === "image/png" || selectedFile.type === "image/jpeg" || selectedFile.type === "image/jpg" ? "Convert " : "Download To Zip"}</Button>
                         </Box>
                     </Stack>
                     :
+                    
                     <Box display={"flex"} justifyContent={"space-between"}  >
                     <Stack
                         className="dropzone1"
@@ -140,7 +166,7 @@ export default function TableExtraction() {
                             multiple
                         /> 
                         <Stack display="flex" alignItems="center" padding={"30px"} margin={"18px 30px"} height={"305px"}>
-                            <img src={PdfImg} alt="logo" />
+                            <img src={TableExtract} alt="logo" />
                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                 <Typography variant="body1" className="sub-title" >
                                     Please drag and drop images <br /> or <br /> PPT files which has tables
@@ -152,7 +178,7 @@ export default function TableExtraction() {
                         <Typography >OR</Typography>
                     </Stack>
                     <Stack display="flex" alignItems="center" padding={"62px"} height={"305px"}  className="dropzone2">
-                            <img src={PdfImg} alt="logo" />
+                            <img src={TableExtract} alt="logo" />
                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                 <Typography variant="body1" className="sub-title" >
                                     Please Upload the images <br /> or <br /> PPT files which has tables
@@ -161,7 +187,9 @@ export default function TableExtraction() {
                             </Stack>
                         </Stack>
                     </Box>
-            }
+            }</>
+                    }
+                   
                     </>
                 )
             }

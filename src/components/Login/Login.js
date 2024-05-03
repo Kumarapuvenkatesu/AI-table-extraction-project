@@ -40,6 +40,7 @@ export default function Login() {
         if (jwtToken !== undefined) {
           window.location.href = '/';
         }
+        
       }, []);
     return (
         <>

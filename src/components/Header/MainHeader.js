@@ -87,9 +87,9 @@ export default function TextHeader() {
               <Typography variant="h5" noWrap sx={{ marginLeft: "20px", fontWeight: "550", color: "#000000" }}>
                 {text}
               </Typography>
-              <IconButton size="large" onClick={handleMenu} >
+              <IconButton size="large" onClick={handleMenu} disableRipple>
                 <AccountCircleOutlined />
-                <Button >Welcome</Button>
+                <Button disableRipple>Welcome</Button>
               </IconButton>
               <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                 <MenuItem onClick={removeToken}>

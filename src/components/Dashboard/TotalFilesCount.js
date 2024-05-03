@@ -21,7 +21,7 @@ export default function TotalFilesCount(){
                 sx={{  height: "145px", width: "350px" }}
               >
                 <Stack sx={{ background: "#006aff", padding: "20px" }} m={1}  >
-                  <item.icon width={"49px"} className="img-gap" />
+                  <item.icon width={"49px"}  />
                 </Stack>
                 <Stack direction="column" m={2}>
                   <Typography variant="h5" sx={{ fontSize: "2.5rem", fontWeight: "700" }}>{item.number}</Typography>
