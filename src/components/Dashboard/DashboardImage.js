@@ -17,7 +17,7 @@ export default function DashboardImage() {
                 <Typography variant="h2" color={"#fff"}>How can I help you today ?</Typography>
                 <Paper
                     component="form"
-                    sx={{ width: 800, borderRadius: '20px', }}
+                    sx={{ borderRadius: '20px', }}
                     className='dashboard-image dasboard-image-background'
                 >
                     <InputBase
