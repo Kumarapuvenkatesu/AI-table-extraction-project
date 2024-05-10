@@ -134,13 +134,13 @@ a.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListIte
   color:  #fff !important;
 }
 .image-position{
-  position: relative;
+  position: absolute;
   left: 107px;
-  top: -170px;
+  top: 70px;
 }
 .image-position-sub{
-  position: relative;
-  top: -117px;
+  position: absolute;
+  top: 65px;
   left: 65px;
 }
 .img-size{
@@ -166,4 +166,20 @@ a.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.MuiListIte
   border: 2px solid lightgrey !important;
   border-radius: 10px ;
   padding: 5px;
+}
+.relative-position{
+  position: relative;
+}
+.grid-position{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 3rem;
+}
+a{
+  text-decoration: none;
+}
+.button-display{
+  display: grid !important;
+    grid-template-columns: auto auto !important;
+    grid-gap: 7rem;
 }

@@ -199,22 +199,22 @@ export default function TableExtraction() {
                         <Typography>hello</Typography>:<>
                           {
                 selectedFile ?
-                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }} sx={{py:"5%"}}>
-                        <img src={filePreviews} alt={'Preview'} width={"300px"} />
+                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center",py:"5%" }} >
+                       {selectedFile.type==='application/x-zip-compressed' || selectedFile.type==="application/vnd.openxmlformats-officedocument.presentationml.presentation" ?null : <img src={filePreviews} alt={'Preview'} width={"300px"} />}
                         <Stack direction="flex" alignItems="center" justifyContent="center" className="border-width">
                             <Typography paragraph mb={0} mr={2}>{selectedFile?.name}</Typography>
                             <IconButton onClick={CloseButton}>
                                 <Close />
                             </IconButton>
                         </Stack>
-                        <Box display={"flex"} justifyContent={"space-between"}>
+                        <Box className="button-display">
                             <Button variant="outlined" onClick={CloseButton } className="border-width">Cancel</Button>
                             <Button className="border-width" type="submit" variant="outlined"  >{selectedFile.type === "image/png" || selectedFile.type === "image/jpeg" || selectedFile.type === "image/jpg" ? "Convert " : "Download To Zip"}</Button>
                         </Box>
                     </Stack>
                     :
                     
-                    <Box display={"flex"} justifyContent={"space-between"}  >
+                    <Box className="grid-position"  >
                     <Stack
                         className="dropzone1"
                         onClick={handleFileUpload}

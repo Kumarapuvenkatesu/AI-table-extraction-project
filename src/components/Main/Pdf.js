@@ -134,7 +134,7 @@ export default function TableExtraction() {
                         <Typography>hello</Typography>:<>
                           {
                 selectedFile ?
-                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }} sx={{py:"5%"}}>
+                    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center",py:"5%" }} >
                         <img src={filePreviews} alt={'Preview'} width={"300px"} />
                         <Stack direction="flex" alignItems="center" justifyContent="center" className="border-width">
                             <Typography paragraph mb={0} mr={2}>{selectedFile?.name}</Typography>
@@ -142,14 +142,14 @@ export default function TableExtraction() {
                                 <Close />
                             </IconButton>
                         </Stack>
-                        <Box display={"flex"} justifyContent={"space-between"}>
+                        <Box className="button-display">
                             <Button variant="outlined" onClick={CloseButton } className="border-width">Cancel</Button>
                             <Button className="border-width" type="submit" variant="outlined"  >{selectedFile.type === "image/png" || selectedFile.type === "image/jpeg" || selectedFile.type === "image/jpg" ? "Convert " : "Download To Zip"}</Button>
                         </Box>
                     </Stack>
                     :
                     
-                    <Box display={"flex"} justifyContent={"space-between"}  >
+                    <Box className="grid-position"   >
                     <Stack
                         className="dropzone1"
                         onClick={handleFileUpload}
@@ -166,7 +166,7 @@ export default function TableExtraction() {
                             multiple
                         /> 
                         <Stack display="flex" alignItems="center" padding={"30px"} margin={"18px 30px"} height={"305px"}>
-                            <img src={TableExtract} alt="logo" />
+                            <img src={PdfImg} alt="logo" />
                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                 <Typography variant="body1" className="sub-title" >
                                     Please drag and drop images <br /> or <br /> PPT files which has tables
@@ -178,7 +178,7 @@ export default function TableExtraction() {
                         <Typography >OR</Typography>
                     </Stack>
                     <Stack display="flex" alignItems="center" padding={"62px"} height={"305px"}  className="dropzone2">
-                            <img src={TableExtract} alt="logo" />
+                            <img src={PdfImg} alt="logo" />
                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                 <Typography variant="body1" className="sub-title" >
                                     Please Upload the images <br /> or <br /> PPT files which has tables

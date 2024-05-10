@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import { useLocation } from "react-router-dom";
 import { Box, Typography,  Stack } from "@mui/material";
 import SubAi from '../../assets/ai-images/sub-page-header.png';
+import Cookies from "js-cookie";
 export default function SubLogo() {
     const { pathname } = useLocation();
     const [HeadindText,setheadingText]=useState()
@@ -23,8 +24,14 @@ export default function SubLogo() {
             setheadingText("HTML generator");
         }
       }, [pathname]);
+      useEffect(() => {
+        const jwtToken = Cookies.get("token");
+        if (jwtToken === undefined) {
+          window.location.href = "/login"
+        }
+      }, [undefined])
     return (
-        <Box color={"#fff"}>
+        <Box color={"#fff"} className="relative-position">
             <img src={SubAi} alt="Ai Tools" width={"100%"} height={"167"}/>
             <Stack className='image-position-sub' width={900}>
                <Typography paragraph mb={0}> Our Ai Tools can help you better!</Typography> 

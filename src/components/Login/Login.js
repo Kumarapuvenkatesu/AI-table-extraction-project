@@ -15,9 +15,8 @@ export default function Login() {
     const submitDetails = async (e) => {
         e.preventDefault();
         try {
-          //  const response = await loginUrl(email, password)
-          const response = await axios.post("http://10.91.10.142:3002/login", { email, password });
-          // const response =await axios.post("http://localhost:3001/login",{email,password});
+          // const response = await axios.post("http://10.91.10.142:3002/login", { email, password });
+          const response =await axios.post("http://localhost:3001/login",{email,password});
           console.log("response loginpage extract", response);
           if (response.data.status === "success") {
             localStorage.setItem("LoginDetails", JSON.stringify(response.data));
