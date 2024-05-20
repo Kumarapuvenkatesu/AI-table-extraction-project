@@ -76,7 +76,7 @@ export default function SideBar() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
             height: "100%"
           }}
         >

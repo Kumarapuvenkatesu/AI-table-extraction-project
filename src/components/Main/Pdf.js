@@ -10,6 +10,7 @@ import axios from "axios";
 import * as FileSaver from 'file-saver';
 import downloadImg from "../../assets/ai-images/word-thumb.png";
 import { DataContext } from "../context/Context";
+import { Loading } from "../Loading/Loading";
 
 export default function TableExtraction() {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -128,7 +129,10 @@ export default function TableExtraction() {
                         ) : (
                             <>{
                                 open ?
-                                    <Typography>hello</Typography> : <>
+                                <Stack>
+                                <Loading mb={4}/>
+                                <Typography paragraph mt={2}>Converting in Progress</Typography>
+                            </Stack> : <>
                                         {
                                             selectedFile ?
                                                 <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center", py: "5%" }} >
