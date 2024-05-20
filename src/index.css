@@ -183,3 +183,10 @@ a{
     grid-template-columns: auto auto !important;
     grid-gap: 7rem;
 }
+.css-11ugd5e-MuiCircularProgress-root{
+  height: 255px !important;
+  width: 255px !important;
+}
+.margin-right-extra{
+  margin-right: 15px;
+}

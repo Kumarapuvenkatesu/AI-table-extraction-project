@@ -43,7 +43,7 @@ export default function SideBar() {
     },
     {
       text: "PDF to Word",
-      icon: () => <img src={PdfImg} alt="PDF" />,
+      icon: () => <img src={PdfImg} alt="PDF" className='margin-right-extra'/>,
       path: "/pdf-to-word",
     },
     {
@@ -88,23 +88,22 @@ export default function SideBar() {
               <img src={AI} alt='ai-logo' width={"49px"} />
             </ListItemButton>
             <Box sx={{ marginTop: "2rem" }}>
-
               <List className='text-center content-center'>
                 <ListItemButton component={NavLink} to="/" disableRipple >
-                  <img src={DashboardImg} alt='Dashboard' />
+                  <img src={DashboardImg} alt='Dashboard' width={"39px"}/>
                 </ListItemButton>
                 {/* <ListItemText primary="DASHBOARD" /> */}
                 <Typography paragraph mt={2} >DASHBOARD</Typography>
               </List>
               <List className='text-center content-center' onClick={showSubHeader}>
                 <ListItemButton disableRipple className={`${open ? 'bg-gray-200' : ''}`}>
-                  <img src={ApplicationImg} alt='application' />
+                  <img src={ApplicationImg} alt='application' width={"39px"}/>
                 </ListItemButton>
                 <Typography paragraph mt={2}>APPLICATION</Typography>
               </List>
               <List className='text-center content-center' >
                 <ListItemButton component={NavLink} to="/assets" disableRipple>
-                  <img src={AssestImg} alt='assests' />
+                  <img src={AssestImg} alt='assests' width={"39px"}/>
                 </ListItemButton>
                 <Typography paragraph mt={2}>ASSETS</Typography>
               </List>
@@ -112,7 +111,7 @@ export default function SideBar() {
           </Stack>
           <List className='text-center content-center'>
             <ListItemButton className='content-center' disableRipple>
-              <img src={SettingImg} alt='settings' />
+              <img src={SettingImg} alt='settings' width={"39px"}/>
               <Typography paragraph mt={2} color={"#fff"}>SETTINGS</Typography>
             </ListItemButton>
           </List>
@@ -144,7 +143,7 @@ export default function SideBar() {
                 <item.icon width={"49px"} className="img-gap" />
                 <ListItemText primary={item.text} />
               </ListItemButton>
-              <Outlet/>
+              <Outlet />
             </List>
           ))}
         </Box>

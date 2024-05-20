@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext,lazy } from "react";
+import React, { useState, useEffect, useContext, lazy } from "react";
 import { AppBar, Toolbar, Typography, Button, IconButton, Stack, Menu, MenuItem } from "@mui/material";
 import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from "@mui/material";
@@ -13,8 +13,8 @@ export default function TextHeader() {
   const data = useContext(DataContext);
   const [text, setText] = useState('');
   const { pathname } = useLocation();
-  const [anchorEl, setAnchorEl] = useState(null); 
-  const open=anchorEl!==null;
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = anchorEl !== null;
   useEffect(() => {
     switch (pathname) {
       case '/':
@@ -40,15 +40,15 @@ export default function TextHeader() {
     }
   }, [pathname]);
   const isScreenLarge = useMediaQuery('(min-width:1024px)');
-  const handleMenu = (event) => { 
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose=()=>{
+  const handleClose = () => {
     setAnchorEl(null)
   }
-  const removeToken=()=>{
+  const removeToken = () => {
     Cookies.remove("token");
-    window.location.href="/login";
+    window.location.href = "/login";
   }
   return (
     <>
@@ -93,13 +93,12 @@ export default function TextHeader() {
               </IconButton>
               <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                 <MenuItem onClick={removeToken}>
-                <LogoutIcon/> <Button >Sign Out</Button> 
+                  <LogoutIcon /> <Button >Sign Out</Button>
                 </MenuItem>
               </Menu>
             </Toolbar>
           </AppBar>
       }
     </>
-
   )
 }

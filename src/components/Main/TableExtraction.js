@@ -10,6 +10,7 @@ import axios from "axios";
 import * as FileSaver from 'file-saver';
 import downloadImg from "../../assets/ai-images/table-success.png";
 import { DataContext } from "../context/Context";
+import { Loading } from "../Loading/Loading";
 
 export default function TableExtraction() {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -89,68 +90,68 @@ export default function TableExtraction() {
     const onSubmit = async (e) => {
         e.preventDefault();
         setOpen(true)
-        if (selectedFile) {
-            switch (selectedFile.type) {
-                // case "image/jpg" || "image/png" || "image/jpeg":
-                case "image/jpg":
-                case "image/png":
-                case "image/jpeg":
-                    try {
-                        const formData = new FormData();
-                        formData.append("image", selectedFile);
-                        const response = await axios.post('http://10.91.10.142:3002/tableExtraction', formData);
-                        console.log("1112", response)
-                        setResponse(response)
-                        if (response.status === 200) {
-                            setDownloadStatus(!downloadStatus)
-                        }
-                    } catch (error) {
-                        console.log(error);
-                        toast.error("An error occurred. Please try again.");
-                        setOpen(false)
-                    }
-                    break;
-                case "application/x-zip-compressed":
-                    try {
-                        const formData = new FormData();
-                        formData.append("image", selectedFile);
-                        const response = await axios.post("http://10.91.10.142:3002/allImgTabExt", formData
-                            , {
-                                responseType: 'blob'
-                            });
-                        console.log("resp", response.data.type)
-                        setResponse(response)
-                        if (response.status === 200) {
-                            setDownloadStatus(!downloadStatus)
-                        }
-                    } catch (error) {
-                        toast.error("Error during download:", error);
-                        setOpen(false)
-                    }
-                    break;
-                case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
-                    try {
-                        const formData = new FormData();
-                        formData.append("image", selectedFile);
-                        const response = await axios.post("http://10.91.10.142:3002/pptFileExtraction", formData, {
-                            responseType: 'blob'
-                        });
-                        console.log("data", response);
-                        console.log("resp", response.data.type)
-                        setResponse(response)
-                        if (response.status === 200) {
-                            setDownloadStatus(!downloadStatus)
-                        }
-                    } catch (error) {
-                        toast.error("Error during download:", error);
-                        setOpen(false)
-                    }
-                    break;
-                default:
-                    toast.error("Not Accepted this type of files");
-                    setOpen(false)
-            }
-        }
+        // if (selectedFile) {
+        //     switch (selectedFile.type) {
+        //         // case "image/jpg" || "image/png" || "image/jpeg":
+        //         case "image/jpg":
+        //         case "image/png":
+        //         case "image/jpeg":
+        //             try {
+        //                 const formData = new FormData();
+        //                 formData.append("image", selectedFile);
+        //                 const response = await axios.post('http://10.91.10.142:3002/tableExtraction', formData);
+        //                 console.log("1112", response)
+        //                 setResponse(response)
+        //                 if (response.status === 200) {
+        //                     setDownloadStatus(!downloadStatus)
+        //                 }
+        //             } catch (error) {
+        //                 console.log(error);
+        //                 toast.error("An error occurred. Please try again.");
+        //                 setOpen(false)
+        //             }
+        //             break;
+        //         case "application/x-zip-compressed":
+        //             try {
+        //                 const formData = new FormData();
+        //                 formData.append("image", selectedFile);
+        //                 const response = await axios.post("http://10.91.10.142:3002/allImgTabExt", formData
+        //                     , {
+        //                         responseType: 'blob'
+        //                     });
+        //                 console.log("resp", response.data.type)
+        //                 setResponse(response)
+        //                 if (response.status === 200) {
+        //                     setDownloadStatus(!downloadStatus)
+        //                 }
+        //             } catch (error) {
+        //                 toast.error("Error during download:", error);
+        //                 setOpen(false)
+        //             }
+        //             break;
+        //         case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+        //             try {
+        //                 const formData = new FormData();
+        //                 formData.append("image", selectedFile);
+        //                 const response = await axios.post("http://10.91.10.142:3002/pptFileExtraction", formData, {
+        //                     responseType: 'blob'
+        //                 });
+        //                 console.log("data", response);
+        //                 console.log("resp", response.data.type)
+        //                 setResponse(response)
+        //                 if (response.status === 200) {
+        //                     setDownloadStatus(!downloadStatus)
+        //                 }
+        //             } catch (error) {
+        //                 toast.error("Error during download:", error);
+        //                 setOpen(false)
+        //             }
+        //             break;
+        //         default:
+        //             toast.error("Not Accepted this type of files");
+        //             setOpen(false)
+        //     }
+        // }
     };
     const downloadData = () => {
         switch (response.type || response.data.type) {
@@ -197,7 +198,10 @@ export default function TableExtraction() {
                         ) : (
                             <>{
                                 open ?
-                                    <Typography>hello</Typography> : <>
+                                    <Stack>
+                                        <Loading mb={4}/>
+                                        <Typography paragraph mt={2}>Extracting Tables in Progress</Typography>
+                                    </Stack> : <>
                                         {
                                             selectedFile ?
                                                 <Stack spacing={2} sx={{ display: "flex", alignItems: "center", justifyContent: "center", py: "5%" }} >
@@ -234,7 +238,7 @@ export default function TableExtraction() {
                                                             <img src={TableExtract} alt="logo" />
                                                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                                                 <Typography variant="body1" className="sub-title" >
-                                                                    Please drag and drop images <br /> or <br /> PPT files which has tables
+                                                                    Drag and drop images <br /> or <br /> PPT files which has tables
                                                                 </Typography>
                                                             </Stack>
                                                         </Stack>
@@ -246,7 +250,7 @@ export default function TableExtraction() {
                                                         <img src={TableExtract} alt="logo" />
                                                         <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                                             <Typography variant="body1" className="sub-title" >
-                                                                Please Upload the images <br /> or <br /> PPT files which has tables
+                                                                Upload the images <br /> or <br /> PPT files which has tables
                                                             </Typography>
                                                             <Button variant="outlined" sx={{ mt: 4 }} onClick={handleFileUpload}>Upload</Button>
                                                         </Stack>

@@ -165,7 +165,7 @@ export default function TableExtraction() {
                                                             <img src={PdfImg} alt="logo" />
                                                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                                                 <Typography variant="body1" className="sub-title" >
-                                                                    Please drag and drop  <br /> PDF File <br /> here to convert Word File
+                                                                    Drag and drop  <br /> PDF File <br /> here to convert Word File
                                                                 </Typography>
                                                             </Stack>
                                                         </Stack>
@@ -177,7 +177,7 @@ export default function TableExtraction() {
                                                         <img src={PdfImg} alt="logo" />
                                                         <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                                             <Typography variant="body1" className="sub-title" >
-                                                                Please Upload the PDF file <br />  Which you waant to convert Word File
+                                                                Upload the PDF file <br />  Which you waant to convert Word File
                                                             </Typography>
                                                             <Button variant="outlined" sx={{ mt: 4 }} onClick={handleFileUpload}>Upload</Button>
                                                         </Stack>

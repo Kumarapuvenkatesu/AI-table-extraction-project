@@ -234,7 +234,7 @@ export default function TableExtraction() {
                                                             <img src={TableExtract} alt="logo" />
                                                             <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                                                 <Typography variant="body1" className="sub-title" >
-                                                                    Please drag and drop images <br /> or <br /> PPT files which has tables
+                                                                    Drag and drop images <br /> or <br /> PPT files which has tables
                                                                 </Typography>
                                                             </Stack>
                                                         </Stack>
@@ -246,7 +246,7 @@ export default function TableExtraction() {
                                                         <img src={TableExtract} alt="logo" />
                                                         <Stack textAlign={"center"} padding={"20px"} margin={"18px 0px 25px 0px"}>
                                                             <Typography variant="body1" className="sub-title" >
-                                                                Please Upload the images <br /> or <br /> PPT files which has tables
+                                                                Upload the images <br /> or <br /> PPT files which has tables
                                                             </Typography>
                                                             <Button variant="outlined" sx={{ mt: 4 }} onClick={handleFileUpload}>Upload</Button>
                                                         </Stack>
