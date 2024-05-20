@@ -7,6 +7,7 @@ import { DataContext } from "../context/Context";
 import Cookies from "js-cookie";
 import IMG from "../../assets/straive-logo.png";
 import LogoutIcon from '@mui/icons-material/Logout';
+ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function TextHeader() {
   const jwtToken = Cookies.get("token");
@@ -90,6 +91,7 @@ export default function TextHeader() {
               <IconButton size="large" onClick={handleMenu} disableRipple>
                 <AccountCircleOutlined />
                 <Button disableRipple>Welcome</Button>
+                <ExpandMoreIcon/>
               </IconButton>
               <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                 <MenuItem onClick={removeToken}>

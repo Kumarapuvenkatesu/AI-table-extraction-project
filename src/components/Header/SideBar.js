@@ -47,8 +47,8 @@ export default function SideBar() {
       path: "/pdf-to-word",
     },
     {
-      text: "HTML Generator",
-      icon: () => <img src={HtmlImg} alt="HTML" />,
+      text: "HTMLGenerator",
+      icon: () => <img src={HtmlImg} alt="HTML" className='margin-nill'/>,
       path: "/html-generator",
     },
   ];
@@ -143,7 +143,6 @@ export default function SideBar() {
                 <item.icon width={"49px"} className="img-gap" />
                 <ListItemText primary={item.text} />
               </ListItemButton>
-              <Outlet />
             </List>
           ))}
         </Box>

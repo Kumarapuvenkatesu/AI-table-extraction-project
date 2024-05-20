@@ -190,3 +190,6 @@ a{
 .margin-right-extra{
   margin-right: 15px;
 }
+.margin-nill{
+  margin-right: -5px;
+}
